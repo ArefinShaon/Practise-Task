@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Left Panel Example</title>
+    <style>
+        body {
+            display: flex;
+            margin: 0;
+        }
+
+        .left-panel {
+            width: 15%;
+            background-color: #042483;
+            padding: 10px;
+            color: #fff;
+            height: 100vh;
+        }
+
+        .left-panel ul {
+            list-style-type: none;
+            padding: 20px;
+            font-weight: 800;
+            font-size: large;
+        }
+
+        .left-panel li {
+            padding: 20px;
+        }
+
+        .left-panel a {
+            text-decoration: none;
+            color: #fff;
+            margin-top: 10px;
+        }
+
+        .left-panel a:hover {
+            color: #ffcc00;
+        }
+
+        .content {
+            width: 80%;
+            padding: 20px;
+        }
+
+        .content p {
+            margin-top: 0;
+        }
+
+        .content div {
+            display: none;
+        }
+
+        #home {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="left-panel">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#information">Information</a></li>
+            <li><a href="#guide">Guide</a></li>
+        </ul>
+    </div>
+    <div class="content">
+        <div id="home">
+            <h2>Home</h2>
+            <p>Welcome to the Home section.</p>
+        </div>
+        <div id="contact">
+            <h2>Contact</h2>
+            <p>Contact information goes here.</p>
+        </div>
+        <div id="information">
+            <h2>Information</h2>
+            <p>General information is displayed in this section.</p>
+        </div>
+        <div id="guide">
+            <h2>Guide</h2>
+            <p>A guide will be shown here.</p>
+        </div>
+    </div>
+
+    <script>
+        function handleLinkClick(event) {
+            event.preventDefault();
+            var target = event.target.getAttribute('href').substring(1);
+            var contentSections = document.querySelectorAll('.content > div');
+
+            for (var i = 0; i < contentSections.length; i++) {
+                contentSections[i].style.display = 'none';
+            }
+
+            document.getElementById(target).style.display = 'block';
+        }
+
+        var links = document.querySelectorAll('.left-panel a');
+        for (var i = 0; i < links.length; i++) {
+            links[i].addEventListener('click', handleLinkClick);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('home').style.display = 'block';
+        });
+    </script>
+</body>
+
+</html>
